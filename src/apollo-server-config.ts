@@ -8,7 +8,7 @@ import { mutationTypeDefs, mutationResolvers } from './mutations';
 
 // import { subscriptionTypeDefs, subscriptionResolvers } from './subscriptions';
 
-const typeDefs = schemaTypeDefs.concat(mutationTypeDefs/* , subscriptionTypeDefs */);
+const typeDefs = schemaTypeDefs.concat(mutationTypeDefs);
 const resolvers = Object.assign(schemaResolvers, mutationResolvers/* , subscriptionResolvers */);
 
 
