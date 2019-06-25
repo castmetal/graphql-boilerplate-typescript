@@ -1,5 +1,6 @@
-import { startTestServer, requestGraphql } from '..';
-import chai from 'chai';
+import { startTestServer, requestGraphql } from '../index';
+import * as chai from 'chai';
+import { before, after } from 'mocha';
 
 const { expect } = chai;
 
@@ -22,14 +23,15 @@ describe('[mutation] doLogin', () => {
           email: "bruce.wayne@editorasanar.com",
           password: "batpassword",
         }) {
-          example
+          user {
+            example
+          }
         }
       }
     `, {
       logged: false,
     });
     const { data } = response;
-    expect(data.doLogin.example).to.exist();
-    expect(data.doLogin.example).to.be.equals('iambatman');
+    expect(data.doLogin.user.example).to.be.equals('string');
   });
 });

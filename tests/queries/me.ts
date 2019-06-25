@@ -1,5 +1,6 @@
-import { startTestServer, requestGraphql } from '..';
-import chai from 'chai';
+import { startTestServer, requestGraphql } from '../index';
+import * as chai from 'chai';
+import { before, after } from 'mocha';
 
 const { expect } = chai;
 
@@ -26,9 +27,8 @@ describe('[query] me', () => {
       logged: true,
     });
     const { data } = response;
-    expect(data.me).to.exist();
     expect(data.me).to.deep.equals({
-      example: 'example'
+      example: 'string'
     });
   });
 });

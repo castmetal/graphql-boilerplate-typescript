@@ -3,15 +3,11 @@ import AuthRequired from '../../middlewares/resolvers/AuthRequired';
 
 import mockData from '../data';
 
-const alternatives = values(mockData.alternatives);
+const users = values(mockData.users);
 
-export default AuthRequired((question) => {
-  const data = question.alternativesId.map(
-    alternative => filter(alternatives, alt => alt.id === alternative)[0],
-  );
-  const count = data.length;
+export default AuthRequired((users) => {
+  
   return {
-    data,
-    count,
+    example: 'Example'
   };
 });

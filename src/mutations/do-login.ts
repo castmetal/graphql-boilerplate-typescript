@@ -14,7 +14,7 @@ export default {
   mutation: `
     doLogin(input: DoLoginInput): DoLoginPayload
   `,
-  resolver: async (_, args, { session, datasources }) => {
+  resolver: async (_, args, { session, dataSources }) => {
     const {
       email,
       password,
@@ -24,7 +24,7 @@ export default {
         return Promise.reject(errors.INCORRECT_EMAIL_OR_PASSWORD);
       }
 
-      return {user: {example: 'Correct'}};
+      return dataSources.User.login(email, password);
 
       return Promise.reject(errors.INCORRECT_EMAIL_OR_PASSWORD);
     } catch (e) {

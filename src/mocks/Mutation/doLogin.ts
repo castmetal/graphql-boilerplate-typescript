@@ -14,6 +14,5 @@ export default (_, args) => {
 
   return {
     user: mockData.users['id-user-bruce-wayne'],
-    token: 'iambatman',
   };
 };
