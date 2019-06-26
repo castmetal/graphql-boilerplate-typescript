@@ -8,11 +8,11 @@ import * as glob from 'glob';
 import * as path from 'path';
 import { pull } from 'lodash';
 
-let datasourceFiles = glob.sync(path.resolve(__dirname, './*.js'))
+let datasourceFiles = glob.sync(path.resolve(__dirname, './*.ts'))
   .map(p => path.basename(p));
 
 
-datasourceFiles = pull(datasourceFiles, 'index.js');
+datasourceFiles = pull(datasourceFiles, 'index.ts');
 
 const dataSources = [];
 
