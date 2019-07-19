@@ -83,7 +83,7 @@ We can make queires and mutations as a user. See the mock user data below:
 
 ##### Login
 
-Email: bruce.wayne@editorasanar.com
+Email: bruce.wayne@gmail.com
 
 Password: batpassword
 

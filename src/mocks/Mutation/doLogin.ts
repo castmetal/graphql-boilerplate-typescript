@@ -8,7 +8,7 @@ export default (_, args) => {
     password,
   } = args.input;
 
-  if (email !== 'bruce.wayne@editorasanar.com' || password !== 'batpassword') {
+  if (email !== 'bruce.wayne@gmail.com' || password !== 'batpassword') {
     throw errors.INCORRECT_EMAIL_OR_PASSWORD;
   }
 

@@ -20,7 +20,7 @@ describe('[mutation] doLogin', () => {
     const response = await requestGraphql(`
       mutation {
         doLogin(input: {
-          email: "bruce.wayne@editorasanar.com",
+          email: "bruce.wayne@gmail.com",
           password: "batpassword",
         }) {
           user {
