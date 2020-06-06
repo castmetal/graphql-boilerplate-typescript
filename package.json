@@ -30,7 +30,7 @@
     "@types/supertest": "2.0.7",
     "acorn": "^6.1.1",
     "apollo-datasource-rest": "^0.3.2",
-    "apollo-server-express": "^2.4.8",
+    "apollo-server-express": "^2.14.2",
     "bcrypt": "^3.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
