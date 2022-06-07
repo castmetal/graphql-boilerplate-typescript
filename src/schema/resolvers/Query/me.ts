@@ -1,10 +1,6 @@
 export default {
   name: "me",
   typeDef: `
-    type Query {
-      me: User
-    }
-
     type User {
       example: String!
     }
