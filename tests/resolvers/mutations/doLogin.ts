@@ -1,26 +1,29 @@
-import * as chai from 'chai';
-import * as sinon from 'sinon';
+import * as chai from "chai";
+import * as sinon from "sinon";
 
-import doLogin from '../../../src/mutations/do-login';
+import doLogin from "../../../src/mutations/do-login";
 
 const { expect } = chai;
 
-describe('[resolver] Mutation { doLogin }', () => {
-  it('Should login', async () => {
-    const dataSources : any = {
+describe("[resolver] Mutation { doLogin }", () => {
+  it("Should login", async () => {
+    const dataSources: Record<string, unknown> = {
       User: {
-        login: sinon.stub().returns({ data: { user: { example: "Example"} } }),
+        login: sinon.stub().returns({ data: { user: { example: "Example" } } }),
       },
     };
-    const session : any = {};
+    const session: Record<string, unknown> = {};
     const args = {
       input: {
-        password: 'string',
-        email: 'string',
+        password: "string",
+        email: "string",
       },
     };
-    const response = await doLogin.resolver(null, args, { session, dataSources });
+    const response = await doLogin.resolver(null, args, {
+      session,
+      dataSources,
+    });
 
-    expect(response.data.user.example).to.be.equal('Example');
+    expect(response.data.user.example).to.be.equal("Example");
   });
 });
