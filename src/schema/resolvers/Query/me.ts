@@ -13,6 +13,7 @@ export default {
     me: User
   `,
   resolver: async (_, args, { dataSources }) => {
-    return dataSources.User.me();
+    const meResponse = await dataSources.Users.me();
+    return meResponse.user;
   },
 };

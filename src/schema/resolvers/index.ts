@@ -14,14 +14,20 @@ queryFiles.forEach((queryFile) => {
   queries.push(Query);
 });
 
+const queryResolvers = [];
+
 let queryResolverFiles = glob
-  .sync(path.resolve(__dirname, "./QueryResolvers/*.ts"))
-  .map((p) => path.basename(p));
+  .sync(path.resolve(__dirname, "./QueryResolvers/**/*.ts"))
+  .map((p) => p);
 
 queryResolverFiles.forEach((queryResolverFile) => {
-  const QueryResolver = require(`./QueryResolvers/${queryResolverFile}`)
-    .default; // eslint-disable-line global-require,import/no-dynamic-require
-  queries.push(QueryResolver);
+  const name = path.basename(queryResolverFile);
+  const splitName = queryResolverFile.split("/QueryResolvers/");
+
+  const nameFolder = splitName[1].replace("/" + name, "");
+
+  const QueryResolver = require(`${queryResolverFile}`).default; // eslint-disable-line global-require,import/no-dynamic-require
+  queryResolvers.push({ name: nameFolder, resObj: QueryResolver });
 });
 
 export const allQueryResolvers = { Query: {} };
@@ -29,6 +35,15 @@ export const allQueryResolvers = { Query: {} };
 queries.forEach((q) => {
   allQueryResolvers.Query[q.name] = q.resolver;
 });
+
+export const resolvers = {};
+
+for (const item of queryResolvers) {
+  let obj = {};
+
+  obj[item.resObj.name] = item.resObj.resolver;
+  resolvers[item.name] = obj;
+}
 
 export default {
   Date: new GraphQLScalarType({
@@ -48,4 +63,5 @@ export default {
     },
   }),
   ...allQueryResolvers,
+  ...resolvers,
 };

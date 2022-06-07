@@ -29,10 +29,10 @@ const context = async ({ req, connection }) => {
 
 const generateDatasources = (datasourcesArray) => {
   const datasources = {};
-  datasourcesArray.map((DataSource) => {
+
+  for (const DataSource of datasourcesArray) {
     datasources[DataSource.name] = new DataSource();
-    return true;
-  });
+  }
 
   return datasources;
 };

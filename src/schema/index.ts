@@ -17,6 +17,10 @@ queryFiles.forEach((queryFile) => {
 
 const rootQuery = gql`
   scalar Date
+
+  type Query {
+    ${queries.map((n) => n.query).join("\n")}
+  }
 `;
 
 export const queryTypeDefs: Array<DocumentNode> = [rootQuery];

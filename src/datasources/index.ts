@@ -4,15 +4,15 @@ Auto export all datasources
 
 */
 
-import * as glob from 'glob';
-import * as path from 'path';
-import { pull } from 'lodash';
+import * as glob from "glob";
+import * as path from "path";
+import { pull } from "lodash";
 
-let datasourceFiles = glob.sync(path.resolve(__dirname, './*.ts'))
-  .map(p => path.basename(p));
+let datasourceFiles = glob
+  .sync(path.resolve(__dirname, "./*.ts"))
+  .map((p) => path.basename(p));
 
-
-datasourceFiles = pull(datasourceFiles, 'index.ts');
+datasourceFiles = pull(datasourceFiles, "index.ts");
 
 const dataSources = [];
 
