@@ -1,8 +1,13 @@
-FROM node:11
-ARG NPM_TOKEN
-EXPOSE 4000
+FROM node:16.15-alpine3.15
+
 WORKDIR /home
-COPY . /home/
-RUN echo "registry=http://registry.npmjs.org/" > .npmrc && echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc && npm config set registry http://registry.npmjs.org
-RUN npm install && npm run build
+ENV NEW_RELIC_NO_CONFIG_FILE=true
+COPY . .
+
+RUN apk add --no-cache python3 g++ make && rm -rf /var/cache/apk/* \
+    && npm ci \
+    && npm run build
+
+EXPOSE 80
+
 CMD ["npm", "run", "start"]
